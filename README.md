@@ -1,10 +1,10 @@
-# Multi-Threaded Number Summation API
+# Multi-Threading
 
 A Node.js and Express application demonstrating how to handle high-CPU blocking operations using **Worker Threads** (`worker_threads`). This architecture allows the server to process massive math calculations simultaneously across multiple CPU cores without freezing or blocking incoming requests.
 
 ---
 
-## 🛠 Architecture Overview
+## Architecture Overview
 
 When a user triggers a heavy calculation, the workload is distributed split-by-range across **5 background worker threads** running in parallel:
 
@@ -18,7 +18,7 @@ The main thread uses `Promise.all()` to wait for all threads to finish, aggregat
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Prerequisites
 Make sure you have **Node.js** (v12+ recommended) installed on your system.
@@ -47,7 +47,7 @@ node server.js
 
 ---
 
-## 🛣 API Endpoints
+## API Endpoints
 
 ### 1. Non-Blocking Endpoint
 * **URL:** `http://localhost:5000/non_blocking`
@@ -63,7 +63,7 @@ node server.js
 
 ---
 
-## 💡 Code Details
+## Code Details
 
 ### Worker Logic (`four_worker.js`)
 Extracts the bounds (`start` and `end`) from `workerData`, runs a high-iteration `for` loop to compute the chunk sum, and broadcasts the value back to the application thread.
